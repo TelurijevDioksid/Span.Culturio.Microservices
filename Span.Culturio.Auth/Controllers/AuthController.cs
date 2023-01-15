@@ -7,7 +7,7 @@ using Span.Culturio.Core.Models.Users;
 
 namespace Span.Culturio.Auth.Controllers
 {
-    [Route("/auth")]
+    [Route("api/auth")]
     [ApiController]
     [Tags("Auth")]
     public class AuthController : ControllerBase

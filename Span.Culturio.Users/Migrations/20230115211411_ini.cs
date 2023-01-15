@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace Span.Culturio.Auth.Migrations
+namespace Span.Culturio.Users.Migrations
 {
     /// <inheritdoc />
-    public partial class IniauthUsers : Migration
+    public partial class ini : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

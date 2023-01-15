@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Span.Culturio.CultureObjects.Controllers
 {
-    [Route("/culture-objects")]
+    [Route("api/culture-objects")]
     [ApiController]
     [Tags("Culture objects")]
     public class CultureObjectController : ControllerBase

@@ -15,6 +15,31 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Span.Culturio.Subscriptions
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Span.Culturio.Packages", "Span.Culturio.Packages\Span.Culturio.Packages.csproj", "{DBD8FA17-EDD3-4AE9-BB54-2400C9748CB3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{7C34AB7B-F34A-4F56-8F07-FAF0CB48F76A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{54508877-25D9-4A14-A132-7D140B864D95}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{33CB95B8-FAD5-4347-A1C1-F6368927B45A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Span.Culturio.ApiGateway", "Span.Culturio.ApiGateway\Span.Culturio.ApiGateway.csproj", "{D9795F2C-E7BF-4617-8DEF-429E9F539A76}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kubernetes", "Kubernetes", "{D1B3EABE-5811-4D67-9E25-FC6715291121}"
+	ProjectSection(SolutionItems) = preProject
+		culturio-api.deployment.yml = culturio-api.deployment.yml
+		culturio-api.service.yml = culturio-api.service.yml
+		culturio-auth.deployment.yml = culturio-auth.deployment.yml
+		culturio-auth.service.yml = culturio-auth.service.yml
+		culturio-cultureobjects.deployment.yml = culturio-cultureobjects.deployment.yml
+		culturio-cultureobjects.service.yml = culturio-cultureobjects.service.yml
+		culturio-ingress.yml = culturio-ingress.yml
+		culturio-packages.deployment.yml = culturio-packages.deployment.yml
+		culturio-packages.service.yml = culturio-packages.service.yml
+		culturio-subscriptions.deployment.yml = culturio-subscriptions.deployment.yml
+		culturio-subscriptions.service.yml = culturio-subscriptions.service.yml
+		culturio-users.deployment.yml = culturio-users.deployment.yml
+		culturio-users.service.yml = culturio-users.service.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,9 +70,22 @@ Global
 		{DBD8FA17-EDD3-4AE9-BB54-2400C9748CB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBD8FA17-EDD3-4AE9-BB54-2400C9748CB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBD8FA17-EDD3-4AE9-BB54-2400C9748CB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9795F2C-E7BF-4617-8DEF-429E9F539A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9795F2C-E7BF-4617-8DEF-429E9F539A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9795F2C-E7BF-4617-8DEF-429E9F539A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9795F2C-E7BF-4617-8DEF-429E9F539A76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0BD5E366-A9DF-4D21-8BDF-775B020E0672} = {7C34AB7B-F34A-4F56-8F07-FAF0CB48F76A}
+		{4C2D14F1-A317-4FD5-A04D-379FDC8E6629} = {7C34AB7B-F34A-4F56-8F07-FAF0CB48F76A}
+		{6C8A512E-EEEC-4316-872C-F5BDEA72F621} = {54508877-25D9-4A14-A132-7D140B864D95}
+		{43085A3E-37A4-4CB1-9FAB-855DE2D2F92D} = {7C34AB7B-F34A-4F56-8F07-FAF0CB48F76A}
+		{85542E37-D9AB-4A99-A74D-4E303AF79AC9} = {7C34AB7B-F34A-4F56-8F07-FAF0CB48F76A}
+		{DBD8FA17-EDD3-4AE9-BB54-2400C9748CB3} = {7C34AB7B-F34A-4F56-8F07-FAF0CB48F76A}
+		{D9795F2C-E7BF-4617-8DEF-429E9F539A76} = {33CB95B8-FAD5-4347-A1C1-F6368927B45A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B59648B7-7981-42CE-B7BB-A469055F3008}

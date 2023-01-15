@@ -1,4 +1,9 @@
 version: "3.4"
+
+networks:
+    backend:
+    frontend:
+
 services:
     culturio-users:
         image: users
@@ -8,9 +13,9 @@ services:
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
             - ASPNETCORE_URLS=http://+:80
-            - ConnectionStrings__DefaultConnection=Server=culturio-users-db;Database=Culturio.Users;User Id=sa;Password=MyPass@word;TrustServerCertificate=True;
-        ports:
-            - 5000:80
+            - ConnectionStrings__DefaultConnection=Server=culturio-users-db;Database=Culturio.Users;User Id=SA;Password=MyPass@word;TrustServerCertificate=True;
+        networks:
+            - backend
         depends_on:
             - culturio-users-db
     culturio-auth:
@@ -21,15 +26,15 @@ services:
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
             - ASPNETCORE_URLS=http://+:80
-            - ConnectionStrings__DefaultConnection=Server=culturio-users-db;Database=Culturio.Users;User Id=sa;Password=MyPass@word;TrustServerCertificate=True;
-        ports:
-            - 5001:80
+            - ConnectionStrings__DefaultConnection=Server=culturio-users-db;Database=Culturio.Users;User Id=SA;Password=MyPass@word;TrustServerCertificate=True;
+        networks:
+            - backend
         depends_on:
             - culturio-users-db
     culturio-users-db:
         image: mcr.microsoft.com/mssql/server:2022-latest
         ports:
-            - 1433:1433
+            - 1437:1433
         environment:
             SA_PASSWORD: MyPass@word
             ACCEPT_EULA: Y
@@ -42,8 +47,8 @@ services:
             - ASPNETCORE_ENVIRONMENT=Development
             - ASPNETCORE_URLS=http://+:80"
             - ConnectionStrings__DefaultConnection=Server=culturio-cultureobjects-db;Database=Culturio.CultureObjects;User Id=sa;Password=MyPass@word;TrustServerCertificate=True;
-        ports:
-            - 5002:80
+        networks:
+            - backend
         depends_on:
             - culturio-cultureobjects-db
     culturio-cultureobjects-db:
@@ -62,8 +67,8 @@ services:
             - ASPNETCORE_ENVIRONMENT=Development
             - ASPNETCORE_URLS=http://+:80"
             - ConnectionStrings__DefaultConnection=Server=culturio-packages-db;Database=Culturio.Packages;User Id=sa;Password=MyPass@word;TrustServerCertificate=True;
-        ports:
-            - 5003:80
+        networks:
+            - backend
         depends_on:
             - culturio-packages-db
     culturio-packages-db:
@@ -81,19 +86,37 @@ services:
         environment:
             - ASPNETCORE_ENVIRONMENT=Development
             - ASPNETCORE_URLS=http://+:80
-            - Endpoints__Packages=http://culturio-packages/api
+            - Endpoints__Packages=http://culturio-api/packages/
             - ConnectionStrings__DefaultConnection=Server=culturio-subscriptions-db;Database=Culturio.Subscriptions;User Id=sa;Password=MyPass@word;TrustServerCertificate=True;
-        ports:
-            - 5004:80
+        networks:
+            - backend
         depends_on:
             - culturio-subscriptions-db
     culturio-subscriptions-db:
         image: mcr.microsoft.com/mssql/server:2022-latest
         ports:
             - 1436:1433
+        networks:
+            - backend
         environment:
             SA_PASSWORD: MyPass@word
             ACCEPT_EULA: Y
-            
-networks:
-    backend:
+    culturio-api:
+        image: api
+        build:
+            context: .
+            dockerfile: Span.Culturio.ApiGateway/Dockerfile
+        environment:
+            - "ASPNETCORE_ENVIROMENT=Development"
+            - "ASPNETCORE_URLS=http://+:80"
+        ports:
+            - "5000:80"
+        networks:
+            - frontend
+            - backend
+        depends_on:
+            - culturio-users
+            - culturio-auth
+            - culturio-cultureobjects
+            - culturio-packages
+            - culturio-subscriptions

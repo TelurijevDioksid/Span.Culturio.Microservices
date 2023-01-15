@@ -8,11 +8,11 @@ using Span.Culturio.Users.Data;
 
 #nullable disable
 
-namespace Span.Culturio.Auth.Migrations
+namespace Span.Culturio.Users.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221220201425_IniauthUsers")]
-    partial class IniauthUsers
+    [Migration("20230115211411_ini")]
+    partial class ini
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace Span.Culturio.Auth.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Span.Culturio.Auth.Data.Entities.User", b =>
+            modelBuilder.Entity("Span.Culturio.Users.Data.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

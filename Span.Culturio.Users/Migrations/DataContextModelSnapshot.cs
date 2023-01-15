@@ -7,7 +7,7 @@ using Span.Culturio.Users.Data;
 
 #nullable disable
 
-namespace Span.Culturio.Auth.Migrations
+namespace Span.Culturio.Users.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot
@@ -21,7 +21,7 @@ namespace Span.Culturio.Auth.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("Span.Culturio.Auth.Data.Entities.User", b =>
+            modelBuilder.Entity("Span.Culturio.Users.Data.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

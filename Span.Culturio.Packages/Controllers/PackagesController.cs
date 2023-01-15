@@ -5,7 +5,7 @@ using Span.Culturio.Packages.Services;
 namespace Span.Culturio.Packages.Controllers
 {
     [Tags("Packages")]
-    [Route("packages")]
+    [Route("api/packages")]
     [ApiController]
     public class PackageController : ControllerBase
     {

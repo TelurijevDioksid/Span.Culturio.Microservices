@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Span.Culturio.Subscriptions.Controllers
 {
-    [Route("subscriptions")]
+    [Route("api/subscriptions")]
     [Tags("Subscriptions")]
     [ApiController]
     public class SubscriptionController : ControllerBase
